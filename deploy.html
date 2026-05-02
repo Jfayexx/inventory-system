@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory Dashboard</title>
+</head>
+<body>
+  <h1>Inventory</h1>
+  <div id="app"></div>
+
+  <script>
+    fetch("https://your-render-url.onrender.com/inventory")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("app").innerHTML =
+          data.map(item => `
+            <p>
+              ${item.name} - Stock: ${item.currentStock} - ${item.status}
+            </p>
+          `).join("")
+      })
+  </script>
+</body>
+</html>
